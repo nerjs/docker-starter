@@ -1,23 +1,8 @@
-import styled, { css } from 'styled-components'
-import { Icon } from 'react-icons-kit'
-import { color, mixColor, mixSize, parseSize, size } from '../../theme/helpers'
+import { css } from 'styled-components'
+import { color, mixColor, mixSize, parseSize, size } from '../../../theme/helpers'
+import { StyledIcon } from './wrappers'
 
-export const Tabs = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: ${size('tabs')};
-`
-
-export const TabSection = styled.div`
-  height: 100%;
-  display: flex;
-  align-items: center;
-`
-
-export const TabEmpty = styled.div`
+export const tabEmptyCss = css`
   flex-grow: 1;
   height: 100%;
   display: flex;
@@ -30,15 +15,13 @@ export const TabEmpty = styled.div`
   border: none;
 `
 
-export const TabSeparator = styled(TabEmpty)`
-  width: 100%;
+const tabActiveCss = css`
+  background-color: ${color('bc.secondary')};
+  box-shadow: inset 0 0 4px #fff;
+  color: ${color('secondary')};
 `
 
-export const TabText = styled(TabEmpty)`
-  font-size: 0.9em;
-`
-
-export const Tab = styled(TabEmpty)`
+export const tabCss = css`
   width: ${({ width }) => (width !== undefined ? parseSize(width) : '100%')};
   box-shadow: inset 0 0 3px #ccc;
   border-radius: 3px;
@@ -69,21 +52,20 @@ export const Tab = styled(TabEmpty)`
     color: ${color('disabled')};
   }
 
-  ${({ active }) =>
-    active
-      ? css`
-          background-color: ${color('bc.secondary')};
-          box-shadow: inset 0 0 4px #fff;
-          color: ${color('secondary')};
-        `
-      : ''}
+  ${({ active }) => (active ? tabActiveCss : '')}
+
+  &.active {
+    ${tabActiveCss}
+  }
 `
 
-export const StyledIcon = styled(Icon)`
-  color: ${color('secondary')};
+const tabIconActiveCss = css`
+  ${StyledIcon} {
+    color: ${mixColor('activeColor', 'secondary')} !important;
+  }
 `
 
-export const TabIcon = styled(Tab)`
+export const tabIconCss = css`
   width: ${mixSize('width', 'tabButton')};
   max-width: ${mixSize('width', 'tabButton')};
   min-width: ${size('tabButton')};
@@ -110,12 +92,9 @@ export const TabIcon = styled(Tab)`
     }
   }
 
-  ${({ active }) =>
-    active
-      ? css`
-          ${StyledIcon} {
-            color: ${mixColor('activeColor', 'secondary')} !important;
-          }
-        `
-      : ''}
+  ${({ active }) => (active ? tabIconActiveCss : '')}
+
+  &.active {
+    ${tabIconActiveCss}
+  }
 `

@@ -6,7 +6,7 @@ export default () => (
     <TabSection>
       <TabInfoIcon title="Info" />
       <TabHelpIcon active title="Help" />
-      <TabPortIcon title="Открытые порты" />
+      <TabPortIcon to="/ports/all" title="Открытые порты" />
     </TabSection>
 
     <TabAddIcon title="Добавить проэкт" width="100%" />

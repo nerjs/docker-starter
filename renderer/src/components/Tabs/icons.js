@@ -1,21 +1,23 @@
 import React from 'react'
-import { StyledIcon, TabIcon } from './blocks'
+import { StyledIcon, TabIcon, TabLinkIcon } from './blocks'
 import { infoCircle } from 'react-icons-kit/fa/infoCircle'
 import { questionCircle } from 'react-icons-kit/fa/questionCircle'
 import { plusCircle } from 'react-icons-kit/fa/plusCircle'
 import { feed } from 'react-icons-kit/icomoon/feed' // runned
 import { cog } from 'react-icons-kit/ikons/cog' // settings
 import { twoVertical } from 'react-icons-kit/entypo/twoVertical'
-import { warning } from 'react-icons-kit/fa/warning'
 import { embed2 } from 'react-icons-kit/icomoon/embed2'
 import { bin } from 'react-icons-kit/ikons/bin'
-import { trashO } from 'react-icons-kit/fa/trashO'
 
-export const TabIconWrapper = ({ icon, ...props }) => (
-  <TabIcon {...props}>
-    <StyledIcon size={16} icon={icon} />
-  </TabIcon>
-)
+export const TabIconWrapper = ({ icon, ...props }) => {
+  const Wrapper = props.to ? TabLinkIcon : TabIcon
+
+  return (
+    <Wrapper {...props}>
+      <StyledIcon size={16} icon={icon} />
+    </Wrapper>
+  )
+}
 
 export const TabInfoIcon = props => <TabIconWrapper {...props} icon={infoCircle} />
 
