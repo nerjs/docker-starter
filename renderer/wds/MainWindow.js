@@ -6,4 +6,5 @@ module.exports = () =>
     height: 500,
     title: 'Main',
     titleBarStyle: 'hidden',
+    backgroundColor: '#1d2125',
   })
