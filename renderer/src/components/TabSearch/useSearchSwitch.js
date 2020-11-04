@@ -26,7 +26,6 @@ export default startShow => {
   }, [width, setIconBounds])
 
   useEffect(() => {
-    console.log('useEffect', show, firstRenderRef.current)
     if (firstRenderRef.current) {
       firstRenderRef.current = false
       return

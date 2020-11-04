@@ -46,8 +46,6 @@ export default ({ inProcess, finalStyle, iconBounds, left, right, width, onChang
     setPositions(newPos)
   }, [iconBounds, left, right, width, finalStyle, layerRef, setPositions])
 
-  console.log(positions)
-
   useEffect(() => {
     if (!inputRef.current) return
     if (!inProcess && finalStyle) inputRef.current.focus()
