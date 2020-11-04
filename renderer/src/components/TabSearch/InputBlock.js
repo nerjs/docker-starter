@@ -10,14 +10,15 @@ export default props => {
     inputRef,
     handleChange,
     positions: { left, right, width, inputWidth },
+    tabWidth,
   } = useSearch(props)
-
+  console.log({ inputWidth })
   return (
     <>
       <SearchLayer finalStyle={finalStyle} onClick={switchShow} ref={layerRef} />
       {(left !== undefined || right !== undefined) && (
-        <SearchContainer width={width} left={left} right={right}>
-          <InputContainer leftSide={!!props.right} width={inputWidth}>
+        <SearchContainer width={width} left={left} right={right} inProcess={inProcess}>
+          <InputContainer tabWidth={tabWidth} leftSide={!!props.right} width={inputWidth}>
             <Input width={inputWidth} leftSide={!!props.right} ref={inputRef} onInput={handleChange} />
           </InputContainer>
           <InnerSearchIcon disabled={inProcess} leftSide={!!props.right} onClick={switchShow} />

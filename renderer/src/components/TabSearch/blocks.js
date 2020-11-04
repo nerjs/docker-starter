@@ -16,7 +16,7 @@ export const SearchSimpleLayer = styled(AbsoluteBlock)`
 `
 
 const _SearchLayer = styled(SearchSimpleLayer)`
-  transition: 0.5s;
+  transition: 0.5s background-color;
 `
 export const SearchLayer = styled(_SearchLayer)`
   background-color: ${({ finalStyle }) => (finalStyle ? '#24292edd' : '#0000')};
@@ -31,8 +31,16 @@ export const SearchContainer = styled(AbsoluteBlock).attrs(({ left, right, width
   padding: 0;
   margin: 0;
   width: 35px;
-  transition: 0.5s;
+  transition: 0.5s width;
   border-radius: ${({ left }) => (left ? '5px 0 0 5px' : '0 5px 5px 0')};
+
+  ${({ inProcess, left }) =>
+    inProcess
+      ? css`
+          border-${left ? 'right' : 'left'}: 2px solid #111;
+          border-radius: 10px;
+        `
+      : ''}
 
   ${Tab} {
     padding: 0;
@@ -55,16 +63,16 @@ export const InnerSearchIcon = styled(TabCloseIcon)`
 `
 
 export const InputContainer = styled(AbsoluteBlock).attrs(({ width }) => ({ style: { width } }))`
-  top: 3px;
+  top: 4px;
   bottom: 3px;
 
-  ${({ leftSide }) =>
+  ${({ leftSide, tabWidth }) =>
     leftSide
       ? css`
-          right: 0;
+          left: ${tabWidth}px;
         `
       : css`
-          left: 0;
+          right: ${tabWidth}px;
         `}
 `
 

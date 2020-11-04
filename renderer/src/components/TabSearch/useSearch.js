@@ -38,15 +38,20 @@ export default ({ inProcess, finalStyle, iconBounds, left, right, width, onChang
 
     newPos.inputWidth = newPos.width - TAB_WIDTH
 
-    if (!finalStyle) newPos.width = TAB_WIDTH
+    if (!finalStyle) {
+      newPos.width = TAB_WIDTH
+      // newPos.inputWidth = 0
+    }
 
     setPositions(newPos)
   }, [iconBounds, left, right, width, finalStyle, layerRef, setPositions])
+
+  console.log(positions)
 
   useEffect(() => {
     if (!inputRef.current) return
     if (!inProcess && finalStyle) inputRef.current.focus()
   }, [inProcess, finalStyle, inputRef])
 
-  return { positions, layerRef, inputRef, handleChange }
+  return { positions, layerRef, inputRef, handleChange, tabWidth: TAB_WIDTH }
 }
