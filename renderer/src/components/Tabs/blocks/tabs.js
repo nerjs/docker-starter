@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { NavLink } from 'react-router-dom'
+import React from 'react'
 import { tabCss, tabEmptyCss, tabIconCss } from './tabsCss'
 
 export const TabEmpty = styled.div`
@@ -18,7 +19,7 @@ export const Tab = styled(TabEmpty)`
   ${tabCss}
 `
 
-export const TabLink = styled(NavLink)`
+export const TabLink = styled(({ active, activeColor, ...props }) => <NavLink {...props} />)`
   ${tabEmptyCss}
 
   ${tabCss}

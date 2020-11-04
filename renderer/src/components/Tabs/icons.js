@@ -8,16 +8,18 @@ import { cog } from 'react-icons-kit/ikons/cog' // settings
 import { twoVertical } from 'react-icons-kit/entypo/twoVertical'
 import { embed2 } from 'react-icons-kit/icomoon/embed2'
 import { bin } from 'react-icons-kit/ikons/bin'
+import { search } from 'react-icons-kit/icomoon/search'
+import { close } from 'react-icons-kit/fa/close'
 
-export const TabIconWrapper = ({ icon, ...props }) => {
+export const TabIconWrapper = React.forwardRef(({ icon, ...props }, ref) => {
   const Wrapper = props.to ? TabLinkIcon : TabIcon
 
   return (
-    <Wrapper {...props}>
+    <Wrapper ref={ref} {...props}>
       <StyledIcon size={16} icon={icon} />
     </Wrapper>
   )
-}
+})
 
 export const TabInfoIcon = props => <TabIconWrapper {...props} icon={infoCircle} />
 
@@ -42,3 +44,7 @@ export const TabSettingsIcon = props => <TabIconWrapper {...props} icon={cog} />
 export const TabCodeIcon = props => <TabIconWrapper {...props} icon={embed2} />
 
 export const TabDeleteIcon = props => <TabIconWrapper {...props} icon={bin} color="remove" activeColor="active.remove" />
+
+export const TabSearchIcon = React.forwardRef((props, ref) => <TabIconWrapper ref={ref} {...props} icon={search} />)
+
+export const TabCloseIcon = props => <TabIconWrapper {...props} icon={close} />
