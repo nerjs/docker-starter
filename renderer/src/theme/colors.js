@@ -19,5 +19,6 @@ export default {
     primary: '#1d2125',
     secondary: '#24292e',
     disabled: ' #2f363d',
+    input: '#1d2125',
   },
 }

@@ -1,12 +1,3 @@
-import { useEffect, useState } from 'react'
+import { useTitle } from 'react-use'
 
-export default newTitle => {
-  const [currentTitle] = useState(document.title)
-  useEffect(() => {
-    document.body = newTitle
-
-    return () => {
-      document.body = currentTitle
-    }
-  }, [])
-}
+export default newTitle => useTitle(newTitle, { restoreOnUnmount: true })
