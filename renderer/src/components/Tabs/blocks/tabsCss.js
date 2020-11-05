@@ -1,4 +1,4 @@
-import { css } from 'styled-components'
+import { css, keyframes } from 'styled-components'
 import { color, mixColor, mixSize, parseSize, size } from '../../../theme/helpers'
 import { StyledIcon } from './wrappers'
 
@@ -96,5 +96,21 @@ export const tabIconCss = css`
 
   &.active {
     ${tabIconActiveCss}
+  }
+`
+
+const spin = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`
+
+export const tabSpinIconCss = css`
+  ${StyledIcon} {
+    animation: ${spin} 3s linear infinite;
   }
 `
