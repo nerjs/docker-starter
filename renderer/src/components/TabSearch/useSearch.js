@@ -16,7 +16,7 @@ export default ({ inProcess, finalStyle, iconBounds, left, right, width, onChang
   )
 
   useEffect(() => {
-    if (!layerRef.current) return
+    if (!layerRef.current || !iconBounds.width) return
     const layerBounds = layerRef.current.getBoundingClientRect()
     const newPos = { width: width + TAB_WIDTH }
 
@@ -25,12 +25,12 @@ export default ({ inProcess, finalStyle, iconBounds, left, right, width, onChang
       if (right) newPos.left = 0
       newPos.width = layerBounds.width
     } else if (left) {
-      newPos.right = iconBounds.right - (iconBounds.width - layerBounds.width - layerBounds.x)
+      newPos.right = iconBounds.right - ((iconBounds.width || 0) - layerBounds.width - layerBounds.x)
     } else if (right) {
       newPos.left = iconBounds.left - layerBounds.x
     }
 
-    if (layerBounds.width < (newPos.right || newPos.left || 0) + newPos.width && finalStyle) {
+    if (finalStyle && layerBounds.width < (newPos.right || newPos.left || 0) + newPos.width) {
       delete newPos.right
       delete newPos.left
       newPos[right ? 'left' : 'right'] = layerBounds.width - newPos.width
@@ -40,7 +40,6 @@ export default ({ inProcess, finalStyle, iconBounds, left, right, width, onChang
 
     if (!finalStyle) {
       newPos.width = TAB_WIDTH
-      // newPos.inputWidth = 0
     }
 
     setPositions(newPos)

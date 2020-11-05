@@ -12,7 +12,7 @@ export default props => {
     positions: { left, right, width, inputWidth },
     tabWidth,
   } = useSearch(props)
-  console.log({ inputWidth })
+
   return (
     <>
       <SearchLayer finalStyle={finalStyle} onClick={switchShow} ref={layerRef} />

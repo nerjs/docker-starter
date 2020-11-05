@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import useCtrlF from '../../hooks/useCtrlF'
 import useEsc from '../../hooks/useEsc'
 
-export default ({ startShow, show, switchShow, setShow, onShow, onHide, ctrlf, escape }) => {
+export default ({ startShow, show, activeRoutePath, setShow, onShow, onHide, ctrlf, escape }) => {
   const [prevShow, setPrevShow] = useState(!!startShow)
 
   useEffect(() => {
@@ -24,4 +24,9 @@ export default ({ startShow, show, switchShow, setShow, onShow, onHide, ctrlf, e
     if (!ctrlf || show) return
     setShow(true)
   }, [ctrlf, show, setShow])
+
+  useEffect(() => {
+    if (!activeRoutePath) return
+    setShow(!!startShow)
+  }, [startShow, activeRoutePath, setShow])
 }
