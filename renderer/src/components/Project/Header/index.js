@@ -23,7 +23,6 @@ export default ({ projectId, ...props }) => {
         <TabSearch
           activeRoutePath={`/project/${projectId}`}
           left
-          show
           width={300}
           onChange={handleSearchChange}
           onShow={handleSearchShow}

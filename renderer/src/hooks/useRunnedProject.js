@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react'
 export default projectId => {
   const [runned, setRunned] = useState(false)
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
   const handleRun = useCallback(() => setRunned(true), [setRunned])
   const handleStop = useCallback(() => setRunned(false), [setRunned])
@@ -14,5 +15,5 @@ export default projectId => {
     return () => clearTimeout(tid)
   }, [runned, setLoading])
 
-  return { runned, loading, handleRun, handleStop }
+  return { error, runned, loading, handleRun, handleStop }
 }
