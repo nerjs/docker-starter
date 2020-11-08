@@ -7,4 +7,5 @@ module.exports = () =>
     title: 'Main',
     titleBarStyle: 'hidden',
     backgroundColor: '#1d2125',
+    alwaysOnTop: true,
   })
