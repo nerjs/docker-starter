@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useState } from 'react'
+import useProjectErrors from './useProjectErrors'
 
 export default projectId => {
   const [runned, setRunned] = useState(false)
   const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [[error]] = useProjectErrors(projectId)
 
   const handleRun = useCallback(() => setRunned(true), [setRunned])
   const handleStop = useCallback(() => setRunned(false), [setRunned])

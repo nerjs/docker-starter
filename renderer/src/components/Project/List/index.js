@@ -1,15 +1,14 @@
 import React from 'react'
-import ContentList from '../../ContentList'
-import ContentTabs from '../../ContentTabs'
-import { Section, SectionBody, SectionHeader } from '../../Sections'
+import { useParams } from 'react-router-dom'
 
 export default () => (
-  <Section>
-    <SectionHeader>
-      <ContentTabs />
-    </SectionHeader>
-    <SectionBody>
-      <ContentList />
-    </SectionBody>
-  </Section>
+  <div>
+    <pre>{JSON.stringify(useParams(), null, 4)}</pre>
+
+    {Array(200)
+      .fill(null)
+      .map((_, i) => (
+        <div key={i}>{i}</div>
+      ))}
+  </div>
 )

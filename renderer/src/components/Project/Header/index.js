@@ -1,7 +1,15 @@
 import React from 'react'
-import { TabCodeIcon, TabDeleteIcon, TabInfoIcon, TabPortIcon, Tabs, TabSection, TabSettingsIcon } from '../../Tabs'
+import {
+  TabCodeIcon,
+  TabDeleteIcon,
+  TabInfoIcon,
+  TabPortIcon,
+  Tabs,
+  TabSection,
+  TabSettingsIcon,
+  TabWarnIcon,
+} from '../../Tabs'
 import TabSearch from '../../TabSearch'
-import { RunnedText } from './blocks'
 import CoreBtn from './CoreBtn'
 import Runned from './Runned'
 import useHeader from './useHeader'
@@ -28,6 +36,7 @@ export default ({ projectId, ...props }) => {
           onShow={handleSearchShow}
           onHide={handleSearchHide}
         />
+        <TabWarnIcon to={`/project/${projectId}/errors`} />
         <TabPortIcon to={`/project/${projectId}/ports`} />
         <TabInfoIcon to={`/project/${projectId}/info`} />
         <TabCodeIcon to={`/project/${projectId}/compose`} />
