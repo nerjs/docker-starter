@@ -3,7 +3,11 @@ import reducer, { ADD_ERROR, CLEAR_ERRORS, REMOVE_ERROR } from './reducer'
 
 const defaultErrors = [
   {
+    message: 'Core project',
+  },
+  {
     project: '1',
+    service: '222',
     message: `Lorem Ipsum 1 - это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов.`,
   },
   {
@@ -11,7 +15,8 @@ const defaultErrors = [
     message: 'test',
   },
   {
-    project: '2',
+    project: '1',
+    service: '222',
     message: 'message project 2',
   },
 ]
