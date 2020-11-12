@@ -1,5 +1,6 @@
 const { processGraphQLRequest } = require('apollo-server-core/dist/requestPipeline')
 const { makeExecutableSchema } = require('graphql-tools')
+const logger = require('nlogs')(module)
 
 class PureGraphql {
   constructor({ schema, resolvers, typeDefs, schemaDirectives, parseOptions, context } = {}) {
@@ -11,12 +12,19 @@ class PureGraphql {
   }
 
   async resolve(request) {
-    const _ctx = typeof this.context === 'function' ? this.context(request) : this.context
-    const ctx = { ...(typeof _ctx === 'object' ? _ctx : { context: _ctx }), request }
-    return processGraphQLRequest(this.config, {
-      context: ctx,
-      request,
-    })
+    try {
+      const _ctx = typeof this.context === 'function' ? this.context(request) : this.context
+      const ctx = { ...(typeof _ctx === 'object' ? _ctx : { context: _ctx }), request }
+      return await processGraphQLRequest(this.config, {
+        context: ctx,
+        request,
+      })
+    } catch (e) {
+      logger.error(e)
+      return {
+        errors: [e],
+      }
+    }
   }
 }
 

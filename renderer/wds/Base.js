@@ -26,14 +26,6 @@ module.exports = (viewName, props = {}) => {
 
   if (process.env.NODE_ENV !== 'production') devTools(win)
 
-  // win.loadURL(
-  //   url.format({
-  //     protocol: 'file',
-  //     slashes: true,
-  //     pathname: path.join(__dirname, '..', 'views', `${viewName}.html`) + '#/test/hash',
-  //   }),
-  // )
-
   win.loadFile(path.join(__dirname, '..', 'views', `${viewName}.html`), { hash: '/' })
 
   win.once('ready-to-show', () => {

@@ -1,0 +1,10 @@
+
+# test comment
+type Test {
+  id: Int!
+  name(zzz: Int): String
+}
+
+type Query {
+  test(id: Int!): Test!
+}
