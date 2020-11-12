@@ -1,1 +1,2 @@
-exports.MainWindow = require('./wds/MainWindow')
+exports.mainWindow = require('./wds/mainWindow')
+exports.playgroundWindow = require('./wds/playgroundWindow')

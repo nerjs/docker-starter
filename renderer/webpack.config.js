@@ -7,6 +7,7 @@ const config = {
   context: path.join(__dirname, 'src'),
   entry: {
     main: './main.js',
+    playground: './playground.js',
   },
   output: {
     filename: '[name].js',
