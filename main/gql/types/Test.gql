@@ -2,9 +2,17 @@
 # test comment
 type Test {
   id: Int!
-  name(zzz: Int): String
+  name: String
 }
 
 type Query {
-  test(id: Int!): Test!
+  test(id: Int!): Test
+}
+
+type Mutation {
+  setTest(id: Int!, name: String!): Test!
+}
+
+type Subscription {
+  tt: Test
 }
