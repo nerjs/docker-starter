@@ -1,10 +1,10 @@
 const Base = require('./Base')
 
 module.exports = () =>
-  Base('playground', {
+  Base('graphiql', {
     width: 800,
     height: 500,
-    title: 'Graphql playground',
+    title: 'Graphiql',
     titleBarStyle: 'hidden',
     backgroundColor: '#fff',
   })

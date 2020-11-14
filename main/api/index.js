@@ -3,18 +3,18 @@ const { execute, subscribe } = require('graphql')
 const { GQL_CHANNEL_QUERY, GQL_CHANNEL_SUBSCRIBE } = require('../../constants/api')
 const Counter = require('../../utils/Counter')
 const Context = require('./Context')
-const gql = require('../gql')
+const schema = require('../shema')
 const { serializeError } = require('serialize-error')
 
 const counter = new Counter()
 
 ipcMain.handle(GQL_CHANNEL_QUERY, async (channel, query) => {
-  const ctx = new Context(gql.schema, channel, query)
+  const ctx = new Context(schema, channel, query)
   return execute(ctx.options)
 })
 
 ipcMain.handle(GQL_CHANNEL_SUBSCRIBE, async (channel, query) => {
-  const ctx = new Context(gql.schema, channel, query)
+  const ctx = new Context(schema, channel, query)
   const subscribeEventName = `${GQL_CHANNEL_SUBSCRIBE}:${counter.num}`
 
   ;(async () => {

@@ -1,10 +1,10 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import Graphiql from 'graphiql'
 const { getMainDefinition } = require('apollo-utilities')
 import { ipcRenderer } from 'electron'
 import gql from 'graphql-tag'
 import { Observable } from '@apollo/react-hooks'
-import { GQL_CHANNEL, GQL_CHANNEL_QUERY, GQL_CHANNEL_SUBSCRIBE } from '../../constants/api'
+import { GQL_CHANNEL_QUERY, GQL_CHANNEL_SUBSCRIBE } from '../../constants/api'
 import render from './utils/render'
 
 const isSubscription = ({ query }) => {

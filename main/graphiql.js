@@ -1,14 +1,11 @@
 const { app } = require('electron')
 const logger = require('nlogs')(module)
-const electronIs = require('electron-is')
-const { mainWindow } = require('../renderer')
-const Tray = require('./Tray')
+const { graphiqlWindow } = require('../renderer')
 require('./api')
 
 logger.info('Start App!')
 
-const tray = new Tray()
-const win = mainWindow()
+graphiqlWindow()
 
 app.on('window-all-closed', () => {
   app.quit()
