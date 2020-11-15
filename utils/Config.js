@@ -76,10 +76,10 @@ class Config {
     const args = {}
 
     if (Array.isArray(this[ARGS_SCHEMA])) {
-      args.args = commandLineArgs(this[ARGS_SCHEMA])
+      args.args = commandLineArgs(this[ARGS_SCHEMA], { partial: true })
     } else {
       Object.entries(this[ARGS_SCHEMA]).forEach(([key, schema]) => {
-        args[key] = commandLineArgs(schema)
+        args[key] = commandLineArgs(schema, { partial: true })
       })
     }
 

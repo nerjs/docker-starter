@@ -1,0 +1,6 @@
+config: prod
+
+args:
+  main: true
+  graphiql: false
+  reload: false

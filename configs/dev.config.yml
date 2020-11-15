@@ -1,0 +1,17 @@
+config: dev
+
+windows:
+  main:
+    alwaysOnTop: true
+    devtools: true
+
+  graphiql:
+    devtools: true
+
+
+# Проверка переменных
+test:
+  test: ${NODE_ENV}/index.js
+  dirname: ${__dirname}
+  filename: ${__filename}
+  cwd: ${__cwd}

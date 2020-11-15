@@ -1,0 +1,27 @@
+config: BASE
+
+
+args:
+  main: false
+  graphiql: false
+  reload: false
+
+windows:
+  
+  main:
+    width: 500
+    height: 400
+    alwaysOnTop: false
+    devtools: false
+    title: 'Main'
+    titleBarStyle: hidden
+    backgroundColor: '#1d2125'
+  
+  graphiql:
+    width: 800
+    height: 500
+    alwaysOnTop: false
+    devtools: false
+    titleBarStyle: hidden
+    backgroundColor: '#ccc'
+

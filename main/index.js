@@ -1,15 +1,6 @@
-const { app } = require('electron')
-const logger = require('nlogs')(module)
-const electronIs = require('electron-is')
-const { mainWindow } = require('../renderer')
-const Tray = require('./Tray')
-require('./api')
+const config = require('../config')
 
-logger.info('Start App!')
+if (config.args.main) require('./main')
+if (config.args.graphiql) require('./graphiql')
 
-const tray = new Tray()
-const win = mainWindow()
-
-app.on('window-all-closed', () => {
-  app.quit()
-})
+if (config.args.reload) require('../utils/winReload')
