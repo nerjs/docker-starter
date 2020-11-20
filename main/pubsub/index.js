@@ -1,3 +1,3 @@
-const { PubSub } = require('graphql-subscriptions')
+const PubSub = require('./PubSub')
 
 module.exports = new PubSub()
