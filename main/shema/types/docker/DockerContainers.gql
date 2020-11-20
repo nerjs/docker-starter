@@ -1,0 +1,21 @@
+
+type DockerContainer {
+  id: String!
+  name: String
+  command: String
+  createdAt: Date 
+  runningFor: Date
+  image: DockerImage
+  labels: [DockerLabel!]!
+  mounts: [DockerMount!]!
+  size: String
+  ports: [DockerPorts!]!
+  status: DockerStatus!
+}
+
+
+
+type Docker {
+  container(id: String!): DockerContainer @ifparent(field: "loaded")
+  containers: [DockerContainer!]! @ifparent(field: "loaded", def: ARRAY)
+}

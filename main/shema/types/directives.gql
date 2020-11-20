@@ -1,0 +1,10 @@
+
+enum DEFTYPES {
+  ARRAY
+  OBJECT
+  NULL
+  STRING
+  NUMBER
+}
+
+directive @ifparent(field: String!, def: DEFTYPES) on FIELD_DEFINITION

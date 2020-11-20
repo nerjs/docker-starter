@@ -1,0 +1,48 @@
+# Счетчики контейнеров
+type DockerInfoContainers {
+
+  # Всего контейнеров
+  count: Int!
+
+  # Запущенные контейнеры
+  running: Int!
+
+  # Приостановленные контейнеры
+  paused: Int!
+
+  # Остановленные либо не запущенные контейнеры
+  stopped: Int!
+}
+
+# Счетчики образов
+type DockerInfoImages {
+
+  # Всего образов загружено
+  count: Int!
+
+  # Образы, которые используются в контейнерах
+  uses: Int!
+}
+
+# Общая информация по состоянию докера
+type DockerInfo {
+
+  # Аддрес сервера docker
+  serverAddress: String!
+
+  # Версия установленного образа
+  version: String! 
+
+  # Корневая директория
+  rootDir: String!
+
+  # Информация по контейнерам
+  containers: DockerInfoContainers!
+
+  # Информация по образам
+  images: DockerInfoImages!
+}
+
+type Docker {
+  info: DockerInfo! @ifparent(field: "loaded", def: OBJECT)
+}

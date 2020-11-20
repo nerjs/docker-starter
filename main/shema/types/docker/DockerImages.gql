@@ -1,0 +1,19 @@
+
+
+type DockerImage {
+  id: String
+  name: String!
+  tag: String
+  created: Date
+  size: Number
+  virtualSize: Number
+  digest: String
+  sharedSize: Number
+  uniqueSize: Number
+  containers: [DockerContainer!]!
+}
+
+type Docker {
+  image(id: String!): DockerImage @ifparent(field: "loaded")
+  images: [DockerImage!]! @ifparent(field: "loaded", def: ARRAY)
+}

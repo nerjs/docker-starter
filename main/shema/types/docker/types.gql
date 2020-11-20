@@ -1,0 +1,29 @@
+type DockerStatus {
+  type: String!
+  code: Int
+  details: String
+  original: String
+}
+
+type DockerPort {
+  port: Int!
+  protocol: String!
+  address: String
+  original: String
+}
+
+type DockerPorts {
+  expose: DockerPort!
+  binding: DockerPort
+  original: String
+}
+
+type DockerMount {
+  id: String
+  source: String
+}
+
+type DockerLabel {
+  name: String!
+  value: String!
+}

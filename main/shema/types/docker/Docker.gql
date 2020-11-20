@@ -1,0 +1,11 @@
+
+
+# Вся работа с докером
+type Docker {
+  # Установлен ли докер
+  loaded: Boolean!
+}
+
+type Query {
+  docker: Docker
+}

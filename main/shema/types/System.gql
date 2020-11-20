@@ -1,0 +1,17 @@
+
+
+type SystemTime {
+  current: Number!
+  uptime: Int!
+  timezone: String!
+  timezoneName: String!
+}
+
+type System {
+  time: SystemTime!
+}
+
+
+type Query {
+  system: System!
+}
