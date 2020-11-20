@@ -1,0 +1,1 @@
+exports.dockerModel = require('./docker')
