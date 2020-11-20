@@ -10,7 +10,12 @@ const counter = new Counter()
 
 ipcMain.handle(GQL_CHANNEL_QUERY, async (channel, query) => {
   const ctx = new Context(schema, channel, query)
-  return execute(ctx.options)
+  try {
+    const { errors, data } = await execute(ctx.options)
+    return { data, errors: errors ? errors.map(serializeError) : null }
+  } catch (e) {
+    return { errors: [serializeError(e)] }
+  }
 })
 
 ipcMain.handle(GQL_CHANNEL_SUBSCRIBE, async (channel, query) => {
