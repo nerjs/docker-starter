@@ -1,21 +1,24 @@
-const BaseModel = require('../base/BaseModel')
-const { app } = require('electron')
-const Execute = require('../../../utils/Execute')
+const logger = require('nlogs')(module)
+const { sleep } = require('helpers-promise')
+const lodashGroupby = require('lodash.groupby')
 const Info = require('./Info')
 const Containers = require('./Containers')
 const Images = require('./Images')
+const BaseCLIModel = require('../base/BaseCLIModel')
+const { match } = require('assert')
+const { parseList } = require('../utils/parsers')
+const Events = require('./Events')
 
-class DockerModel extends BaseModel {
+class DockerModel extends BaseCLIModel {
   constructor() {
     super('docker')
-
-    this.ex = new Execute('docker', {
-      cwd: app.getPath('home'),
-    })
 
     this.info = new Info(this)
     this.containers = new Containers(this)
     this.images = new Images(this)
+    this.events = new Events(this)
+
+    this.watchEvents()
   }
 
   async check() {
@@ -29,6 +32,34 @@ class DockerModel extends BaseModel {
       this.__check = false
       return false
     }
+  }
+
+  async watchEvents() {
+    try {
+      for await (let events of this.events.watch()) {
+        const grouped = lodashGroupby(events, 'type')
+
+        await Promise.all(
+          Object.entries(grouped).map(async ([type, evs]) => {
+            const utilObj = { image: this.images, container: this.containers }[type]
+
+            if (utilObj) {
+              await utilObj.event(evs)
+              await this.info.event(evs)
+            } else {
+              logger.debug(type, evs)
+            }
+          }),
+        )
+
+        await sleep(500)
+      }
+    } catch (e) {
+      logger.error(e)
+      await sleep(100)
+    }
+    await sleep(100)
+    await this.watchEvents()
   }
 }
 

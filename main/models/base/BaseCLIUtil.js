@@ -55,11 +55,19 @@ class BaseCLIUtil {
   }
 
   get cliArgs() {
-    return this[CLI_ARGS]
+    return BaseCLIUtil.parseArgs(this[CLI_ARGS], this)
   }
 
   get options() {
-    return this[OPTIONS]
+    return BaseCLIUtil.parseArgs(this[OPTIONS], this)
+  }
+
+  get cachedData() {
+    return this[CACHED_DATA]
+  }
+
+  set cachedData(values) {
+    this[CACHED_DATA] = values
   }
 
   async update(...middlewares) {
@@ -105,6 +113,10 @@ class BaseCLIUtil {
     if (parent instanceof Execute) return [null, parent]
     if (parent[executeName] && parent[executeName] instanceof Execute) return [parent, parent[executeName]]
     return [null, null]
+  }
+
+  static parseArgs(argValue, ...args) {
+    return typeof argValue === 'function' ? argValue(...args) : argValue
   }
 
   static EXECUTE_NAME = 'ex'

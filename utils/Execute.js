@@ -60,10 +60,12 @@ class Execute {
   }
 
   watch(currentArgs = [], currentOptions, structuredResolve) {
-    console.log('start watch')
     const command = [this.command, ...this.args, ...this.prepareArgs(currentArgs)].join(' ')
-    const options = merge.recursive({}, this.options, currentOptions || {})
-    const asyncIterator = new AsyncIterator({ type: AsyncIterator.RETURN_TYPES.ALL })
+    const { type, ...options } = merge.recursive({}, this.options, currentOptions || {}, {
+      type: AsyncIterator.RETURN_TYPES.ONCE,
+    })
+
+    const asyncIterator = new AsyncIterator({ type })
 
     const handlerWrap = handler => value => `${value}`.trim() && handler(`${value}`.trim())
 

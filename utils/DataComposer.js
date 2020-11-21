@@ -1,5 +1,6 @@
 class DataComposer {
-  constructor() {
+  constructor(maxSaveItems) {
+    this.maxSaveItems = maxSaveItems
     this.rows = []
   }
 
@@ -11,8 +12,14 @@ class DataComposer {
     return !!this.size
   }
 
+  leave(count) {
+    if (this.size >= count) return []
+    return this.rows.splice(0, this.size - count)
+  }
+
   set(data) {
     this.rows.push(data)
+    if (this.maxSaveItems) this.leave(this.maxSaveItems)
   }
 
   get() {

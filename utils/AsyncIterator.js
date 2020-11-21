@@ -8,12 +8,13 @@ const STOPPED = Symbol('Stopped iterate')
 class AsyncIterator {
   constructor(options) {
     this.options = {
-      type: AsyncIterator.RETURN_TYPES.ALL,
+      type: AsyncIterator.RETURN_TYPES.ONCE,
+      maxSaveItems: AsyncIterator.MAX_SAVE_ITEMS,
       ...(options || {}),
     }
 
     this.emitter = new Events()
-    this.dc = new DataComposer()
+    this.dc = new DataComposer(this.options.maxSaveItems)
     this[STOPPED] = false
 
     const dataHanler = data => this.dc.set(data)
@@ -47,6 +48,14 @@ class AsyncIterator {
     return this
   }
 
+  complete(data) {
+    return this.return(data)
+  }
+
+  error(err) {
+    return this.throw(err)
+  }
+
   async createIteratorPromise() {
     if (this.options.type === AsyncIterator.RETURN_TYPES.NEXT) return asyncEmitters(this.emitter, 'data', 'error')
 
@@ -55,6 +64,8 @@ class AsyncIterator {
     }
 
     switch (this.options.type) {
+      case AsyncIterator.RETURN_TYPES.ONCE:
+        return this.dc.get()
       case AsyncIterator.RETURN_TYPES.FIRST:
         return this.dc.first()
       case AsyncIterator.RETURN_TYPES.LAST:
@@ -79,7 +90,10 @@ class AsyncIterator {
     FIRST: 'first',
     LAST: 'last',
     NEXT: 'next',
+    ONCE: 'once',
   }
+
+  static MAX_SAVE_ITEMS = 10000
 }
 
 module.exports = AsyncIterator

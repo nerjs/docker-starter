@@ -14,11 +14,7 @@ const firstLowerCase = obj => {
 
 exports.parseItem = str => firstLowerCase(JSON.parse(str))
 
-exports.parseList = str =>
-  str
-    .trim()
-    .match(/\{(.*)\}/gi)
-    .map(exports.parseItem)
+exports.parseList = str => (str.trim().match(/\{(.*)\}/gi) || []).map(exports.parseItem)
 
 exports.parseTime = str => {
   if (!str || !str.length) throw new Error('Incorrect date string')

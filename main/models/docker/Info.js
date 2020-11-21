@@ -1,5 +1,6 @@
 const BaseCLIUtil = require('../base/BaseCLIUtil')
 const { parseItem } = require('../utils/parsers')
+const pubsub = require('../../pubsub')
 
 class Info extends BaseCLIUtil {
   constructor(parent) {
@@ -7,6 +8,8 @@ class Info extends BaseCLIUtil {
       default: {},
       parse: parseItem,
     })
+
+    this.filter = pubsub.createPubSubFilter('docker:filter')
   }
 
   async root() {
@@ -32,6 +35,11 @@ class Info extends BaseCLIUtil {
     return {
       count,
     }
+  }
+
+  async event(events) {
+    await this.update()
+    this.filter.publish(await this.get())
   }
 }
 

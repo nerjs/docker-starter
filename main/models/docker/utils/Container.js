@@ -1,4 +1,3 @@
-const moment = require('moment')
 const bytes = require('bytes')
 const BaseCLIUtil = require('../../base/BaseCLIUtil')
 const BaseImage = require('./BaseImage')
