@@ -6,8 +6,9 @@ let i = 0
 setInterval(() => pubsub.publish('TT', { id: i++, name: 'name' }), 1000)
 const Query = {
   test: async (_, { id }, ctx) => {
-    console.log({ _, id, ctx })
-    return c.has(id) ? { id, name: c.get(id) } : null
+    // console.log({ _, id, ctx })
+    // return c.has(id) ? { id, name: c.get(id) } : null
+    return { id: 112 }
   },
 }
 

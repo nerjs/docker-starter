@@ -5,8 +5,10 @@ type Test {
   name: String
 }
 
+
 type Query {
   test(id: Int!): Test
+
 }
 
 type Mutation {
