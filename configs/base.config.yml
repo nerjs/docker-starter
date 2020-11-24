@@ -6,13 +6,21 @@ args:
   graphiql: false
   reload: false
 
+paths:
+  views: ${cwd}/renderer/views
+  renderer:
+    src: ${cwd}/renderer/dist
+    dist: ${cwd}/renderer/dist
+  icons: ${cwd}/icons
+
 windows:
   
   main:
-    width: 500
+    width: 800
     height: 400
     alwaysOnTop: false
     devtools: false
+    center: true
     title: 'Main'
     titleBarStyle: hidden
     backgroundColor: '#1d2125'
@@ -20,6 +28,7 @@ windows:
   graphiql:
     width: 800
     height: 500
+    center: true
     alwaysOnTop: false
     devtools: false
     titleBarStyle: hidden
