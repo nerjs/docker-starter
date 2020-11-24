@@ -1,6 +1,6 @@
 const { app } = require('electron')
 const logger = require('nlogs')(module)
-const openWindow = require('./windowsManager/openWindow')
+const openWindow = require('../utils/openWindow')
 require('./api')
 
 logger.info('Start Graphiql!')

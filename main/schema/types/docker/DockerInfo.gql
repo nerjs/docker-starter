@@ -44,5 +44,5 @@ type DockerInfo {
 }
 
 type Docker {
-  info: DockerInfo! @ifparent(field: "loaded", def: OBJECT)
+  info: DockerInfo @ifparent(field: "loaded")
 }

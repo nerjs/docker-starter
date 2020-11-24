@@ -1,12 +1,15 @@
 config: dev
 
 windows:
+
+  base:
+    devtools: true
+    webPreferences:
+      devTools: true
+
+
   main:
     alwaysOnTop: true
-    devtools: true
-
-  graphiql:
-    devtools: true
 
 
 # Проверка переменных

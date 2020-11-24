@@ -1,7 +1,7 @@
 const { app } = require('electron')
 const logger = require('nlogs')(module)
-const openWindow = require('./windowsManager/openWindow')
 const Tray = require('./Tray')
+const openWindow = require('../utils/openWindow')
 require('./api')
 
 logger.info('Start App!')

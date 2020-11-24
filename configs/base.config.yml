@@ -14,23 +14,24 @@ paths:
   icons: ${cwd}/icons
 
 windows:
-  
-  main:
-    width: 800
-    height: 400
-    alwaysOnTop: false
-    devtools: false
-    center: true
-    title: 'Main'
-    titleBarStyle: hidden
-    backgroundColor: '#1d2125'
-  
-  graphiql:
+
+  base:
     width: 800
     height: 500
     center: true
-    alwaysOnTop: false
     devtools: false
-    titleBarStyle: hidden
+    autoHideMenuBar: true
+    alwaysOnTop: false
+    webPreferences:
+      devTools: false
+      nodeIntegration: true
+
+
+  main:
+    title: 'Main'
+    backgroundColor: '#1d2125'
+  
+  graphiql:
+    title: 'Graphiql'
     backgroundColor: '#ccc'
 

@@ -1,12 +1,14 @@
 const path = require('path')
+const merge = require('merge')
 const config = require('../../config')
 const getDisplay = require('./getDisplay')
 
 module.exports = (name, props, initiator) => {
   const display = getDisplay(initiator)
 
-  merge.recursive(
+  return merge.recursive(
     {},
+    config.windows.base,
     config.windows[name],
     props,
     {
