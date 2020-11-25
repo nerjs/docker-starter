@@ -8,6 +8,9 @@ args:
 
 paths:
   views: ${cwd}/renderer/views
+  main: 
+    main: ${cwd}/main
+    schema: ${cwd}/main/schema
   renderer:
     src: ${cwd}/renderer/dist
     dist: ${cwd}/renderer/dist

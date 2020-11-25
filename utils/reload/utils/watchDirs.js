@@ -8,17 +8,18 @@ const watchDirs = async (inputDirs = [], cb) => {
   let watchers = []
   const dirs = await getAllDirs(inputDirs)
   const handler = debounce(async () => {
+    logger.debug('Handle change')
     watchers.forEach(w => w.close())
     try {
       await cb()
     } catch (e) {
       logger.error(e)
-      await sleep(1000)
+      await sleep(100)
     }
 
     watchDirs(inputDirs, cb).catch(logger.error)
   }, 10)
-
+  logger.info(dirs)
   watchers = dirs.map(dir =>
     fsExtra.watch(
       dir,

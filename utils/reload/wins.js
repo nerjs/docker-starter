@@ -4,7 +4,7 @@ const reloadWins = require('./utils/reloadWins')
 const { DIR_DIST } = require('./constants')
 const watchDirs = require('./utils/watchDirs')
 
-logger.info('Start watch renderer dist')
+logger.info('Start watch renderer dist', DIR_DIST)
 
 fsExtra.ensureDirSync(DIR_DIST)
 

@@ -95,7 +95,7 @@ class Config {
 
     if (typeof envObject === 'object') {
       Object.entries(envObject).forEach(([key, value]) => {
-        str = str.replace(`\$\{${key}\}`, `${value}`)
+        str = str.replace(new RegExp(`\\$\{${key}\}`, 'g'), `${value}`)
       })
     }
 

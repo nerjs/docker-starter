@@ -5,7 +5,7 @@ const schema = require(SCHEMA_PATH)
 const clearAllCaches = require('./utils/clearAllCaches')
 const reloadWins = require('./utils/reloadWins')
 
-logger.info('Start watch schema')
+logger.info('Start watch schema', SCHEMA_PATH)
 
 watchDirs(SCHEMA_WATCH_DIRS, async () => {
   logger.time('reload')

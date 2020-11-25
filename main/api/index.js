@@ -3,13 +3,13 @@ const { execute, subscribe } = require('graphql')
 const { GQL_CHANNEL_QUERY, GQL_CHANNEL_SUBSCRIBE } = require('../../constants/api')
 const Counter = require('../../utils/Counter')
 const Context = require('./Context')
-const getSchema = require('../schema')
+const schema = require('../schema')
 const { serializeError } = require('serialize-error')
 
 const counter = new Counter()
 
 ipcMain.handle(GQL_CHANNEL_QUERY, async (channel, query) => {
-  const ctx = new Context(getSchema(), channel, query)
+  const ctx = new Context(schema, channel, query)
   try {
     const { errors, data } = await execute(ctx.options)
     return { data, errors: errors ? errors.map(serializeError) : null }
