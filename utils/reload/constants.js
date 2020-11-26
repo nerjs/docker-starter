@@ -9,5 +9,3 @@ exports.SCHEMA_WATCH_DIRS = [
   path.dirname(require.resolve(`${config.paths.main.main}/pubsub`)),
   path.dirname(require.resolve(`${config.paths.main.main}/models`)),
 ]
-
-console.log(exports)

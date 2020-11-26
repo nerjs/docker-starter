@@ -13,16 +13,3 @@ export default () => (
     <Route path="*" component={Projects} />
   </Switch>
 )
-
-// export default () => {
-//   return (
-//     <RootContainer>
-//       <SidebarContainer>
-//         <Sidebar />
-//       </SidebarContainer>
-//       <ContentContainer>
-//         <Content />
-//       </ContentContainer>
-//     </RootContainer>
-//   )
-// }

@@ -19,7 +19,7 @@ const watchDirs = async (inputDirs = [], cb) => {
 
     watchDirs(inputDirs, cb).catch(logger.error)
   }, 10)
-  logger.info(dirs)
+
   watchers = dirs.map(dir =>
     fsExtra.watch(
       dir,

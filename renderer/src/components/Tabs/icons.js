@@ -4,6 +4,7 @@ import { infoCircle } from 'react-icons-kit/fa/infoCircle'
 import { questionCircle } from 'react-icons-kit/fa/questionCircle'
 import { plusCircle } from 'react-icons-kit/fa/plusCircle'
 import { chevronCircleLeft } from 'react-icons-kit/fa/chevronCircleLeft'
+import { chevronCircleRight } from 'react-icons-kit/fa/chevronCircleRight'
 import { feed } from 'react-icons-kit/icomoon/feed' // runned
 import { cog } from 'react-icons-kit/ikons/cog' // settings
 import { twoVertical } from 'react-icons-kit/entypo/twoVertical'
@@ -32,6 +33,7 @@ export const TabHelpIcon = props => <TabIconWrapper {...props} icon={questionCir
 
 export const TabAddIcon = props => <TabIconWrapper width={120} {...props} icon={plusCircle} />
 export const TabBackIcon = props => <TabIconWrapper width={120} {...props} icon={chevronCircleLeft} />
+export const TabForwardIcon = props => <TabIconWrapper width={120} {...props} icon={chevronCircleRight} />
 
 export const TabPortIcon = props => <TabIconWrapper {...props} icon={twoVertical} color="ports" activeColor="active.ports" />
 
