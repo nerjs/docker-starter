@@ -1,10 +1,6 @@
 import styled from 'styled-components'
-import React from 'react'
 import { color, size } from '../../theme'
 import scrollCss from '../../utils/scrollCss'
-import StyledIcon from '../../utils/StyledIcon'
-import { spinner2 } from 'react-icons-kit/icomoon/spinner2'
-import spinCss from '../../utils/spinCss'
 
 export const Section = styled.section`
   margin: 0;
@@ -34,20 +30,3 @@ export const SectionBody = styled.div`
 
   ${scrollCss}
 `
-
-const SectionLoadingContainer = styled.div`
-  position: absolute;
-  right: 5px;
-  bottom: 5px;
-
-  ${StyledIcon} {
-    color: ${color('secondary')};
-    ${spinCss('1.5s')}
-  }
-`
-
-export const SectionLoading = () => (
-  <SectionLoadingContainer>
-    <StyledIcon icon={spinner2} />
-  </SectionLoadingContainer>
-)

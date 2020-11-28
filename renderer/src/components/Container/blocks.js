@@ -19,6 +19,7 @@ export const SidebarContainer = styled.div`
   overflow: auto;
   background-color: ${color('bc.secondary')};
   border-right: 1px solid #111;
+  font-size: ${size('sidebar')};
 `
 
 export const ContentContainer = styled.div`

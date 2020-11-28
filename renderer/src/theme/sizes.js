@@ -1,6 +1,7 @@
 export default {
   main: 12,
-  sidebar: '1.15em',
+  loading: 16,
+  sidebar: '1.05em',
   tabs: '1em',
   headerHeight: 30,
   tabDefault: '100%',
