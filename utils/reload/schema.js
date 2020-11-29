@@ -9,12 +9,12 @@ logger.info('Start watch schema', SCHEMA_PATH)
 
 watchDirs(SCHEMA_WATCH_DIRS, async () => {
   logger.time('reload')
-  logger.debug('Reload schema')
 
-  clearAllCaches()
+  await clearAllCaches(require.resolve(SCHEMA_PATH))
 
   const newSchema = require(SCHEMA_PATH)
 
+  logger.debug('Reload schema', schema === newSchema)
   Object.entries(newSchema).forEach(([key, value]) => {
     schema[key] = value
   })

@@ -7,6 +7,7 @@ const getAllDirs = require('./getAllDirs')
 const watchDirs = async (inputDirs = [], cb) => {
   let watchers = []
   const dirs = await getAllDirs(inputDirs)
+
   const handler = debounce(async () => {
     logger.debug('Handle change')
     watchers.forEach(w => w.close())
