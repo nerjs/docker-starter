@@ -7,7 +7,7 @@ export default {
   tabDefault: '100%',
   tabButton: 30,
   alert: {
-    rows: 1,
+    rows: 2,
     font: 12,
   },
 }

@@ -3,6 +3,7 @@ export default {
   secondary: '#959da5',
   disabled: '#959da588',
   warn: '#ffbe56',
+  info: '#1296dc',
   service: '#c33c3c',
   container: '#1296dc',
   runned: '#3aac8f',
