@@ -1,11 +1,12 @@
 import React from 'react'
 import Alert from './Alert'
+import { AlertErrorNamePrimary } from './blocks'
 
 const isDev = process.env.NODE_ENV !== 'production'
 
 export default ({ error, ...props }) => (
   <Alert warn {...props}>
-    {isDev && <b>[ {error.name} ] </b>}
+    {isDev && <AlertErrorNamePrimary>{error.name}</AlertErrorNamePrimary>}
     {error.message}
 
     {isDev && (

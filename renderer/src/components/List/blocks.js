@@ -1,6 +1,5 @@
-import { NavLink } from 'react-router-dom'
-import styled, { css } from 'styled-components'
-import { color, size, whenColor } from '../../theme'
+import styled from 'styled-components'
+import { color, size } from '../../theme'
 
 export const ListContainer = styled.div`
   width: 99%;

@@ -19,7 +19,7 @@ export const AlertContainer = styled.div.attrs(({ to }) => ({ as: to ? Link : 'd
   text-decoration: none;
   font-size: ${size('alert.font')};
   padding: 5px 5px 5px 0;
-  margin: 5px 0;
+  margin: 5px;
 
 
   ${({ warn, info }) => css`
@@ -52,4 +52,43 @@ export const AlertMessage = styled.div`
           text-overflow: ellipsis;
         `
       : ''}
+`
+
+export const AlertErrorNamePrimary = styled.span`
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-right: 8px;
+
+  &:before {
+    content: '[';
+    margin-right: 3px;
+  }
+
+  &:after {
+    content: ']';
+    margin-left: 3px;
+  }
+`
+
+export const AlertErrorNameSecondary = styled.span`
+  font-size: 0.95em;
+  font-weight: normal;
+  margin: 0 2px;
+  font-style: italic;
+
+  &:first-child {
+    margin-left: 8px;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &:before {
+    content: '(';
+  }
+
+  &:after {
+    content: ')';
+  }
 `
