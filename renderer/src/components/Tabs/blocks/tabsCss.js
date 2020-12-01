@@ -3,6 +3,7 @@ import { color, mixColor, mixSize, parseSize, size } from '../../../theme/helper
 import { StyledIcon } from './wrappers'
 
 export const tabEmptyCss = css`
+  position: relative;
   flex-grow: 1;
   height: 100%;
   display: flex;
@@ -13,6 +14,7 @@ export const tabEmptyCss = css`
   border-radius: 1px;
   outline: none;
   border: none;
+  text-decoration: none;
 `
 
 const tabActiveCss = css`
