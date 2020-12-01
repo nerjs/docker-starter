@@ -58,8 +58,13 @@ export const subscribe = query =>
       }
     }
 
-    ipcRenderer.invoke(GQL_CHANNEL_SUBSCRIBE, prepareQuery(query)).then(({ subscribeEventName }) => {
+    ipcRenderer.invoke(GQL_CHANNEL_SUBSCRIBE, prepareQuery(query)).then(({ subscribeEventName, errors }) => {
       if (stoped) return
+      if (errors) {
+        observer.error(errors)
+        unsubscribe()
+        return
+      }
       eventName = subscribeEventName
       ipcRenderer.on(eventName, handler)
     })

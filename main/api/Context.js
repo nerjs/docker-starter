@@ -1,4 +1,4 @@
-const { parse } = require('graphql')
+const { parse, validate } = require('graphql')
 const { BrowserWindow } = require('electron')
 
 class IpcGqlContext {
@@ -47,6 +47,11 @@ class IpcGqlContext {
       this.sender.reply || this.sender.send ? this.sender : this.webContents,
       args,
     )
+  }
+
+  validate() {
+    const errors = validate(this.schema, this.query)
+    if (errors && errors.length) throw errors
   }
 }
 
