@@ -5,8 +5,6 @@ const Info = require('./Info')
 const Containers = require('./Containers')
 const Images = require('./Images')
 const BaseCLIModel = require('../base/BaseCLIModel')
-const { match } = require('assert')
-const { parseList } = require('../utils/parsers')
 const Events = require('./Events')
 
 class DockerModel extends BaseCLIModel {
@@ -47,7 +45,7 @@ class DockerModel extends BaseCLIModel {
               await utilObj.event(evs)
               await this.info.event(evs)
             } else {
-              logger.debug(type, evs)
+              // logger.debug(type, evs)
             }
           }),
         )

@@ -12,8 +12,3 @@ type DockerImage {
   uniqueSize: Number
   containers: [DockerContainer!]!
 }
-
-type QueryDocker {
-  image(id: String!): DockerImage @ifparent(field: "loaded")
-  images: [DockerImage!]! @ifparent(field: "loaded", def: ARRAY)
-}

@@ -4,8 +4,22 @@
 type QueryDocker {
   # Установлен ли докер
   loaded: Boolean!
+  info: DockerInfo @ifparent(field: "loaded")
+  container(id: String!): DockerContainer @ifparent(field: "loaded")
+  containers: [DockerContainer!]! @ifparent(field: "loaded", def: ARRAY)
+  image(id: String!): DockerImage @ifparent(field: "loaded")
+  images: [DockerImage!]! @ifparent(field: "loaded", def: ARRAY)
+}
+
+type SubscriptionDocker {
+  containers: DockerContainerEvent!
 }
 
 type Query {
-  docker: QueryDocker
+  docker: QueryDocker!
+}
+
+
+type Subscription {
+  docker: SubscriptionDocker!
 }

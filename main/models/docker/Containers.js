@@ -10,7 +10,8 @@ class Containers extends CollectionCLIUtil {
     this.filterCreate = pubsub.createPubSubFilter('docker:containers:create')
   }
 
-  async event(avents) {
+  async event(events) {
+    console.log(events)
     await this.update()
   }
 }

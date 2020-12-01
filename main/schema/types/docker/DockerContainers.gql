@@ -13,9 +13,6 @@ type DockerContainer {
   status: DockerStatus!
 }
 
-
-
-type QueryDocker {
-  container(id: String!): DockerContainer @ifparent(field: "loaded")
-  containers: [DockerContainer!]! @ifparent(field: "loaded", def: ARRAY)
+type DockerContainerEvent {
+  container: DockerContainer!
 }

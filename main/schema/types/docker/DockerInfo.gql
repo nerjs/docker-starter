@@ -42,7 +42,3 @@ type DockerInfo {
   # Информация по образам
   images: DockerInfoImages!
 }
-
-type QueryDocker {
-  info: DockerInfo @ifparent(field: "loaded")
-}
