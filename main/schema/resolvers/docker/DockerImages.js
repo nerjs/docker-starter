@@ -4,9 +4,9 @@ const DockerImage = {
   containers: ({ name, tag }) => dockerModel.containers.filterBy({ 'image.name': name, 'image.tag': tag }),
 }
 
-const Docker = {
+const QueryDocker = {
   images: () => dockerModel.images.get(),
   image: (_, { id }) => dockerModel.images.getById(id),
 }
 
-module.exports = { DockerImage, Docker }
+module.exports = { DockerImage, QueryDocker }

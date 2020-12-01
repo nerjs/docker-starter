@@ -43,6 +43,6 @@ type DockerInfo {
   images: DockerInfoImages!
 }
 
-type Docker {
+type QueryDocker {
   info: DockerInfo @ifparent(field: "loaded")
 }

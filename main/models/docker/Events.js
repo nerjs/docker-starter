@@ -44,8 +44,13 @@ class Events extends CollectionCLIUtil {
     if (tryCount >= EVENTS_MAX_RETRY)
       return logger.warn(`Достигнуто максимальное количество попыток прослушивания (${tryCount})`)
     if (tryCount) logger.debug(`Try №${tryCount}`)
+
     try {
-      for await (let { stdout, stderr } of this.ex.watch(['events', '--format="{{json .}}"'], {}, true)) {
+      for await (let data of this.ex.watch(['events', '--format="{{json .}}"'], {}, true)) {
+        if (!data) continue
+
+        const { stderr, stdout } = data
+
         if (stderr) {
           logger.warn(stderr)
           continue

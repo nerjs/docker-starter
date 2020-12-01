@@ -1,11 +1,11 @@
 
 
 # Вся работа с докером
-type Docker {
+type QueryDocker {
   # Установлен ли докер
   loaded: Boolean!
 }
 
 type Query {
-  docker: Docker
+  docker: QueryDocker
 }

@@ -26,8 +26,8 @@ const DockerInfo = {
   images: () => dockerModel.info.images(),
 }
 
-const Docker = {
+const QueryDocker = {
   info: () => dockerModel.info.root(),
 }
 
-module.exports = { DockerInfoImages, DockerInfo, Docker }
+module.exports = { DockerInfoImages, DockerInfo, QueryDocker }

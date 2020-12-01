@@ -13,7 +13,7 @@ type DockerImage {
   containers: [DockerContainer!]!
 }
 
-type Docker {
+type QueryDocker {
   image(id: String!): DockerImage @ifparent(field: "loaded")
   images: [DockerImage!]! @ifparent(field: "loaded", def: ARRAY)
 }
