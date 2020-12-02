@@ -1,0 +1,8 @@
+type DockerQuery {
+  version: String @ifparent(field: "loaded")
+  versions: DockerVersion @ifparent(field: "loaded")
+}
+
+type Query {
+  docker: DockerQuery!
+}

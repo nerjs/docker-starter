@@ -1,0 +1,35 @@
+
+
+type DVComponentDetails  {
+  apiVersion: String
+  minApiVersion: String
+  arch: String
+  buildTime: Date
+  experimental: Boolean
+  gitCommit: String
+  goVersion: String
+  kernelVersion: String
+  os: String
+}
+
+
+type DVComponent {
+  name: String!
+  version: String!
+  details: DVComponentDetails
+}
+
+
+type DockerVersion {
+  platform: String!
+  components: [DVComponent!]!
+  version: String!
+  apiVersion: String!
+  minApiVersion: String
+  gitCommit: String
+  goVersion: String
+  os: String
+  arch: String
+  kernelVersion: String
+  buildTime: Date
+}

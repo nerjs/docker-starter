@@ -12,8 +12,8 @@ class FilteredPubSub extends PubSub {
 
   createPubSubFilter(trigger) {
     const pubsubFilter = filter => this.filter(trigger, filter)
-    pubsubFilter.publish = this.publish.bind(this)
-    pubsubFilter.subscribe = this.subscribe.bind(this)
+    pubsubFilter.publish = payload => this.publish(trigger, payload)
+    pubsubFilter.subscribe = fn => this.subscribe(trigger, fn)
     pubsubFilter.trigger = trigger
 
     return pubsubFilter
