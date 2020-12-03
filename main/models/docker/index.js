@@ -7,6 +7,6 @@ ProxyPromise.wrap(docker, ['ping', 'info', 'version', 'events'])
 
 console.log(docker)
 
-docker.version().then(r => console.dir(r, { depth: 10 }))
+docker.info().then(r => console.dir(r, { depth: 10 }))
 
 module.exports = docker

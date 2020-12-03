@@ -9,10 +9,16 @@ const DockerQuery = {
   },
   versions: async () => {
     const versions = firstKeysLowerCase(await docker.version())
-    console.log(versions.components)
     return {
       ...versions,
       platform: versions.platform.name,
+    }
+  },
+  info: async () => {
+    const info = firstKeysLowerCase(await docker.info(), true, [], ['ID'])
+    console.log(111, info)
+    return {
+      ...info,
     }
   },
 }

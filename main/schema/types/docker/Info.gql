@@ -1,0 +1,21 @@
+
+type DIPlugins {
+  volume: [String!]
+  network: [String!]
+  authorization: [String!]
+  log: [String!]
+}
+
+
+type DockerInfo {
+  containers: Int!
+  containersRunning: Int!
+  containersPaused: Int!
+  containersStopped: Int!
+  images: Int!
+  plugins: DIPlugins!
+  systemTime: Date!
+  indexServerAddress: String
+  serverVersion: String!
+  warnings: [String!]
+}
