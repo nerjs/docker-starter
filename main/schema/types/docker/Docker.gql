@@ -4,6 +4,14 @@ type DockerQuery {
   info: DockerInfo!
 }
 
+type DockerSubs {
+  events: DockerEvent!
+}
+
 type Query {
   docker: DockerQuery!
+}
+
+type Subscription {
+  docker: DockerSubs!
 }

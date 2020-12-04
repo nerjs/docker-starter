@@ -1,0 +1,33 @@
+
+type DockerEventAtributes {
+  name: String
+  image: String
+  exitCode: Int
+}
+
+
+type DockerEventActor {
+  id: String!
+  attributes: DockerEventAtributes
+}
+
+
+
+enum EventType {
+  container
+  image
+  network
+  volume
+} 
+
+type DockerEvent {
+  type: EventType!
+  action: String!
+  id: String
+  status: String
+  from: String
+  scope: String
+  time: Date
+  timeNano: Number
+  actor: DockerEventActor
+}

@@ -9,7 +9,8 @@ logger.info('Start watch schema', SCHEMA_PATH)
 
 watchDirs(SCHEMA_WATCH_DIRS, async () => {
   logger.time('reload')
-
+  const models = require('../../main/models')
+  await models.end()
   await clearAllCaches(require.resolve(SCHEMA_PATH))
 
   const newSchema = require(SCHEMA_PATH)
